@@ -1,0 +1,27 @@
+This is a [Next.js](https://nextjs.org/) boilerplate project
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm i 
+# and later
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the page.
+
+## Technology
+
+- Tailwind
+- Husky
+- Prettier
+- ESLint
+- Next Js
+
+## Design system
+
+- Atomic Design
