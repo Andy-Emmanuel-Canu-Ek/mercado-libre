@@ -1,4 +1,4 @@
-import BaseService from './BaseService'
+import BaseService from './BaseService';
 
-export * from './BaseService'
-export default BaseService
+export * from './BaseService';
+export default BaseService;

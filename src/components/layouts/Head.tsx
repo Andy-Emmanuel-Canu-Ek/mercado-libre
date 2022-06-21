@@ -22,10 +22,10 @@ type IHead = {
 };
 
 const Head = ({
-  title = 'Shopping cart',
+  title = 'Mercado libre',
   description = '',
   subject = '',
-  copyright = 'Shopping cart',
+  copyright = 'Mercado libre',
   language = 'es',
   openGraph,
   keyworkds = '',
@@ -44,10 +44,7 @@ const Head = ({
     <NextHead>
       <meta charSet="utf-8" />
       <title>{title}</title>
-      <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <link rel="apple-touch-icon" sizes="32x32" href="/apple-touch-icon-32x32.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+      <link rel="shortcut icon" href="/assets/ic_logo_ml.png" type="image/png" />
       <link rel="canonical" href={`${process.env.applicationUrl}`} />
       <link rel="shortlink" href={`${process.env.applicationUrl}`} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />

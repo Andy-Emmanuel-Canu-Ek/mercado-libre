@@ -5,7 +5,9 @@ import environment from 'shared/constants/environment';
 import '../styles/globals.css';
 import { ReactElement } from 'react';
 import Navbar from 'components/layouts/Navbar';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
+const queryClient = new QueryClient();
 const { bugsnagApiKey } = environment;
 
 if (bugsnagApiKey && bugsnagApiKey !== '') {
@@ -20,8 +22,10 @@ if (bugsnagApiKey && bugsnagApiKey !== '') {
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
   return (
     <>
-      <Navbar />
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </>
   );
 }
