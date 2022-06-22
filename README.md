@@ -79,7 +79,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Demo
 
-Insert gif or link to demo
+Link to [demo](https://code-challenge-mercado-libre.herokuapp.com/)
 
 ## Color Reference
 
