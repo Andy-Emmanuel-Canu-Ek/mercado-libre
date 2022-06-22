@@ -1,62 +1,57 @@
-import ItemsService from 'api/Items';
-import { Option } from 'shared/types/common';
-import SearchBox from 'components/atoms/SearchBox';
-import { formatSuggestions } from 'shared/utils/formats';
-import { ReactElement, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { ReactElement, useState } from 'react';
+import routes from 'shared/constants/routes';
+const { itemsRoute } = routes;
 
 const Navbar = (): ReactElement => {
-  const [suggestValue, setSuggestValue] = useState<string>('');
-  const [suggests, setSuggests] = useState<Option[]>([]);
-  const [querySearch, setQuerySearch] = useState('');
+  const router = useRouter();
+  const [searchValue, setSearchValue] = useState<string>('');
 
-  useEffect(() => {
-    setSuggests([]);
-    if (suggestValue.length <= 2) return;
-
-    ItemsService.searchAutosuggest({ q: suggestValue }).then((suggests) => {
-      const dataSuggests = formatSuggestions(suggests);
-      setSuggests(dataSuggests);
-    });
-  }, [suggestValue]);
-
-  const onInputChange = (value) => {
-    setQuerySearch(value);
-    if (value.length < 2) return;
-    setSuggestValue(value);
+  const onChangeSearchBox = (event) => {
+    const value = event.target.value;
+    setSearchValue(value);
   };
 
-  const onSelectQuerySearch = (option) => setQuerySearch(option?.value);
+  const onSearch = () => router.replace(`${itemsRoute}?search=${searchValue}`);
+
+  const onEnterCapture = (event) => {
+    if (event.key === 'Enter') onSearch();
+  };
 
   return (
-    <nav className="z-0 relative" x-data="{open:false,menu:false, lokasi:false}">
-      <div className="relative z-10 bg-primary-color shadow">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
-          <div className="relative flex items-center justify-between h-16">
-            <div className="flex items-center px-2 lg:px-0">
-              <a className="flex-shrink-0" href="#">
-                <img className="hidden lg:block h-10 w-auto" src="/assets/ic_logo_ml_large.png" alt="Logo" />
-              </a>
-            </div>
-            <div className="flex-1 flex px-6 justify-left">
-              <div className="w-full">
-                <form className="relative z-50">
-                  <div className="flex">
-                    <SearchBox
-                      name="searchBox"
-                      placeholder="Nunca dejes de buscar"
-                      options={suggests}
-                      isSearchable={true}
-                      defaultValue={querySearch}
-                      value={querySearch}
-                      onInputChange={onInputChange}
-                      onChange={onSelectQuerySearch}
-                    />
-                  </div>
-                </form>
+    <nav className="bg-primary-color shadow">
+      <div className="max-w-screen-xl mx-auto">
+        <div className="flex items-center justify-between h-14">
+          <div className="flex items-center">
+            <a href="/">
+              <img className="h-10 w-auto overflow-y-hidden" src="/assets/ic_logo_ml_large.png" alt="Logo" />
+            </a>
+          </div>
+          <div className="flex-1 flex justify-left pl-6">
+            <div className="w-full">
+              <div className="relative z-50">
+                <div className="flex justify-left">
+                  <input
+                    type="text"
+                    name="searchBox"
+                    className="w-full pl-4 shadow-md focus:outline-none focus:border-sky-500 rounded-xs"
+                    placeholder="Nunca dejes de buscar"
+                    value={searchValue}
+                    onChange={onChangeSearchBox}
+                    onKeyDownCapture={onEnterCapture}
+                  />
+                  <button
+                    type="button"
+                    className="bg-white-gray-color h-9 w-9 hover:bg-gray-color shadow-md rounded-xs transition duration-500"
+                    onClick={onSearch}
+                  >
+                    <img src="/assets/ic_search_large.png" className="ml-2 h-5 w-5" />
+                  </button>
+                </div>
               </div>
             </div>
-            <div></div>
           </div>
+          <div></div>
         </div>
       </div>
     </nav>

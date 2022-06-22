@@ -1,11 +1,12 @@
 import React, { ReactNode } from 'react';
 import MainLayout from 'components/layouts/MainLayout';
 import Content from 'components/atoms/Content';
+import ItemTemplate from 'components/templates/ItemTemplate';
 
-const Products = (): ReactNode => (
+const Item = (): ReactNode => (
   <MainLayout>
-    <Content>Hola</Content>
+    <ItemTemplate />
   </MainLayout>
 );
 
-export default Products;
+export default Item;

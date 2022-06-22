@@ -2,10 +2,11 @@ import type { AppProps } from 'next/app';
 import Bugsnag from '@bugsnag/js';
 import BugsnagPluginReact from '@bugsnag/plugin-react';
 import environment from 'shared/constants/environment';
-import '../styles/globals.css';
+import 'styles/globals.css';
 import { ReactElement } from 'react';
 import Navbar from 'components/layouts/Navbar';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { BaseContext } from 'context/BaseContext';
 
 const queryClient = new QueryClient();
 const { bugsnagApiKey } = environment;
@@ -23,8 +24,10 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
-        <Component {...pageProps} />
+        <BaseContext>
+          <Navbar />
+          <Component {...pageProps} />
+        </BaseContext>
       </QueryClientProvider>
     </>
   );

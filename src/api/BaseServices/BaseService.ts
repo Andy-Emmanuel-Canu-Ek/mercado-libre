@@ -2,7 +2,7 @@ import { AxiosError, AxiosRequestConfig } from 'axios';
 import environment from 'shared/constants/environment';
 
 class BaseService {
-  protected url: string | undefined = 'https://api.mercadolibre.com/sites/MLA';
+  protected url: string | undefined = 'https://api.mercadolibre.com/';
   protected getHeaders(params?: any) {
     const config: AxiosRequestConfig = {
       headers: {

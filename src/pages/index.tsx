@@ -1,2 +1,2 @@
-import Products from './products';
-export default Products;
+import Home from 'pages/home';
+export default Home;
