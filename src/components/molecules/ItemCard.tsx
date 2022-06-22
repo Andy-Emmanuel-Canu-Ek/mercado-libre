@@ -25,7 +25,7 @@ export const ItemCard = ({ item }: ItemProps) => {
 
   return (
     <li className="flex justify-between w-auto cursor-pointer p-4 hover:bg-second-gray-color" onClick={goToItem}>
-      <img src={thumbnail} height="160px" className="mr-4 w-48 h-48 rounded-md shadow-xs" />
+      <img src={thumbnail} className="mr-4 w-48 h-48 rounded-md shadow-xs" />
       <div className="w-11/12">
         <div className="flex">
           <Text className="text-dark-color mt-4 mb-8 text-dark-color" text={formatMoney(price)} size="24px" />

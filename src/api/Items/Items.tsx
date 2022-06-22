@@ -20,7 +20,6 @@ export class ItemsService extends BaseService {
   }
 
   async findAll(params: FindAllParams): Promise<ResponseItems> {
-    console.log(params);
     const search: string = 'search';
     try {
       const response = await axios.get<ResponseItems>(`${this.url}/${this.path}/${search}`, { params });
