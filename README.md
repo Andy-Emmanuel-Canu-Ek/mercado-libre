@@ -33,16 +33,6 @@ The five stages of
 
 [Documentation](https://drive.google.com/file/d/1s-iftaoTZ4L_hleoFOEAhBmhi7S5eDwj/view?usp=sharing)
 
-## Usage/Examples
-
-```javascript
-import Component from 'my-project';
-
-function App() {
-  return <Component />;
-}
-```
-
 ## Run Locally
 
 Clone the project
